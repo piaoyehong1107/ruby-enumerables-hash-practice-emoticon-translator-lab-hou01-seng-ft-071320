@@ -1,6 +1,7 @@
 # require modules here
 require "pry"
 def load_library(file_path)
+<<<<<<< HEAD
   emoticons_newhash = { }
   require 'yaml'
   emoticons_hash = YAML.load(File.read(file_path))
@@ -8,6 +9,13 @@ def load_library(file_path)
   emoticons_newhash.store(key,{:english=>value[0],:japanese=>value[1]})
   }
 emoticons_newhash
+=======
+  require 'yaml'
+  emoticons_hash = YAML.load(File.read(file_path))
+  emoticons_hash.each do |key,value|
+  emoticons_newhash = {key=>{:english=>value[0]},:japanese=>value[1]}
+end
+>>>>>>> a499941e2c97fa9a494a9ba3529b77226118b866
 end
 
 def get_japanese_emoticon(file_path, emoticon)
@@ -27,6 +35,7 @@ emojis = [ ]
   end
 end
 
+<<<<<<< HEAD
 
 def get_english_meaning(file_path, emoticon)
  emoticons_newhash = load_library(file_path)
@@ -44,3 +53,10 @@ def get_english_meaning(file_path, emoticon)
   end
 end
 #binding.pry
+=======
+def get_english_meaning(file_path, emoticon)
+ emoticons_newhash = load_library(file_path)
+ emoticons_newhash.select{|key, hash| hash[:japanese] == emoticon }
+ binding.pry
+end
+>>>>>>> a499941e2c97fa9a494a9ba3529b77226118b866
